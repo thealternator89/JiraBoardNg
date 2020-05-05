@@ -1,0 +1,11 @@
+<div [class]="'ticket-card w-100 card ' + getIssueTypeName()">
+  <div class="card-header">
+    <img class="issue-type" [src]="details.issueType.icon">
+    <a class="issue-id" [href]="details.url" target="_blank">{{details.id}}</a>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{details.summary}}</p>
+    <p class="card-text" *ngIf="details.assignee"><small class="text-muted">{{details.assignee}}</small></p>
+    <p class="card-text" *ngIf="!details.assignee"><small class="text-muted"><i>Unassigned</i></small></p>
+  </div>
+</div>

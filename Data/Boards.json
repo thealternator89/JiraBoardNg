@@ -1,0 +1,42 @@
+{
+  "hoiho1": {
+    "Title": "Hoiho Standup Board",
+    "Columns": [
+      {
+        "Title": "Ready for Dev",
+        "BgColor": "#cfd",
+        "FilterId": 20913
+      },
+      {
+        "Title": "In Dev",
+        "BgColor": "#cdf",
+        "FilterId": 20912
+      },
+      {
+        "Title": "In Review",
+        "BgColor": "#cdf",
+        "FilterId": 20907
+      },
+      {
+        "Title": "Merged",
+        "BgColor": "#cdf",
+        "FilterId": 20908
+      },
+      {
+        "Title": "Dev Test",
+        "BgColor": "#fdc",
+        "FilterId": 20388
+      },
+      {
+        "Title": "QA Test",
+        "BgColor": "#fdc",
+        "FilterId": 20909
+      },
+      {
+        "Title": "Release",
+        "BgColor": "#fcc",
+        "FilterId": 20910
+      }
+    ]
+  }
+}

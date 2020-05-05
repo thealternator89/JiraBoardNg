@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+#board-empty {
+  margin-top: 250px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+p {
+  margin-bottom: 5px;
+}

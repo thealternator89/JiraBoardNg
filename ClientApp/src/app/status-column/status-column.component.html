@@ -1,0 +1,10 @@
+<div class="column" [ngStyle]="{'background-color': status.bgColor}">
+  <div class="heading">
+    <a [href]="status.filterUrl" target="_blank">
+      {{status.title}}
+    </a>
+  </div>
+  <hr>
+  <app-ticket-card [details]="ticket" *ngFor="let ticket of tickets"></app-ticket-card>
+  <app-column-error [error]="error" *ngIf="error"></app-column-error>
+</div>

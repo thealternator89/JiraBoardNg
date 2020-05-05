@@ -1,0 +1,6 @@
+<body>
+  <div class="app">
+    <app-status-column [status]="column" *ngFor="let column of board.columns"></app-status-column>
+    <app-board-empty-notice [boardId]="boardId" *ngIf="!(board && board.columns && board.columns.length > 0)"></app-board-empty-notice>
+  </div>
+</body>

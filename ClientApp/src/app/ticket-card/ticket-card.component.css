@@ -1,0 +1,21 @@
+.ticket-card {
+  margin: 5px 0;
+}
+
+.issue-type {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.issue-id {
+  font-size: 10pt;
+  vertical-align: middle;
+}
+
+a {
+  color: black;
+}
+
+.card-body {
+  font-size: 10pt;
+}
