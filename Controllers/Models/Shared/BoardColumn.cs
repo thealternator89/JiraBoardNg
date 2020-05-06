@@ -8,5 +8,7 @@ namespace JiraBoardNg.Controllers.Models.Shared
         public string BgColor { get; set; }
         public int FilterId { get; set; }
         public string FilterUrl { get; set; }
+        public int WipLimitMin { get; set; }
+        public int WipLimitMax { get; set; }
     }
 }

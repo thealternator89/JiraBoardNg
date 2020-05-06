@@ -7,6 +7,7 @@ namespace JiraBoardNg.Controllers.Models.Shared
         public string Assignee { get; set; }
         public IssueType IssueType { get; set; }
         public string Url { get; set; }
+        public string Updated { get; set; }
     }
 
     public class IssueType

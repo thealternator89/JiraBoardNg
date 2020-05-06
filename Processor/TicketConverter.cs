@@ -27,7 +27,8 @@ namespace JiraBoardNg.Processor
                     Text = issue.Fields?.IssueType.Name,
                     Icon = issue.Fields?.IssueType.IconUrl,
                 },
-                Url = $"{_jiraBaseUrl}/browse/{issue.Key}"
+                Url = $"{_jiraBaseUrl}/browse/{issue.Key}",
+                Updated = issue.Fields?.Updated,
             });
         }
     }

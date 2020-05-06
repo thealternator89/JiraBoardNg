@@ -1,11 +1,19 @@
-<div [class]="'ticket-card w-100 card ' + getIssueTypeName()">
-  <div class="card-header">
-    <img class="issue-type" [src]="details.issueType.icon">
-    <a class="issue-id" [href]="details.url" target="_blank">{{details.id}}</a>
-  </div>
+<div [class]="getClasses()" (click)="click()">
   <div class="card-body">
-    <p class="card-text">{{details.summary}}</p>
-    <p class="card-text" *ngIf="details.assignee"><small class="text-muted">{{details.assignee}}</small></p>
-    <p class="card-text" *ngIf="!details.assignee"><small class="text-muted"><i>Unassigned</i></small></p>
+    <p class="card-text">
+      <img class="issue-type" [src]="details.issueType.icon">
+      <a class="issue-id" [href]="details.url" target="_blank">{{details.id}}</a>
+    </p>
+    <div class="card-text">{{details.summary}}</div>
+    <p class="card-text" *ngIf="details.assignee"><small class="muted">{{details.assignee}}</small></p>
+    <p class="card-text" *ngIf="!details.assignee"><small class="muted"><i>Unassigned</i></small></p>
+    <div id="updated-badge">
+      <span id="updated-label">Last Updated: </span>
+      <span class="badge badge-success" *ngIf="timeSinceUpdate < 1">< 1 Day</span>
+      <span class="badge badge-success" *ngIf="timeSinceUpdate === 1">1 Day</span>
+      <span class="badge badge-success" *ngIf="timeSinceUpdate > 1 && timeSinceUpdate <= 5">{{timeSinceUpdate}} Days</span>
+      <span class="badge badge-warning" *ngIf="timeSinceUpdate > 5 && timeSinceUpdate <= 10">{{timeSinceUpdate}} Days</span>
+      <span class="badge badge-danger" *ngIf="timeSinceUpdate > 10">{{timeSinceUpdate}} Days</span>
+    </div>
   </div>
 </div>
