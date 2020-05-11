@@ -1,15 +1,16 @@
 <div [class]="getClasses()" (click)="click()">
   <div class="card-body">
+    <img class="assignee-icon" [src]="details.assignee.icon" *ngIf="details && details.assignee && details.assignee.icon">
     <p class="card-text">
       <img class="issue-type" [src]="details.issueType.icon">
       <a class="issue-id" [href]="details.url" target="_blank">{{details.id}}</a>
     </p>
     <div class="card-text">{{details.summary}}</div>
-    <p class="card-text" *ngIf="details.assignee"><small class="muted">{{details.assignee}}</small></p>
+    <p class="card-text" *ngIf="details.assignee"><small class="muted">{{details.assignee.name}}</small></p>
     <p class="card-text" *ngIf="!details.assignee"><small class="muted"><i>Unassigned</i></small></p>
     <div id="updated-badge">
       <span id="updated-label">Last Updated: </span>
-      <span class="badge badge-success" *ngIf="timeSinceUpdate < 1">< 1 Day</span>
+      <span class="badge badge-success" *ngIf="timeSinceUpdate < 1">&lt; 1 Day</span>
       <span class="badge badge-success" *ngIf="timeSinceUpdate === 1">1 Day</span>
       <span class="badge badge-success" *ngIf="timeSinceUpdate > 1 && timeSinceUpdate <= 5">{{timeSinceUpdate}} Days</span>
       <span class="badge badge-warning" *ngIf="timeSinceUpdate > 5 && timeSinceUpdate <= 10">{{timeSinceUpdate}} Days</span>

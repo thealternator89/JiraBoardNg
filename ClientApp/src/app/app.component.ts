@@ -1,5 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {StatusColumnComponent} from "./status-column/status-column.component";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public board = { columns: [] };
+  public board = { boardName: '', columns: [] };
   public boardId;
+
+  public error;
+
+  @ViewChildren(StatusColumnComponent, {read: false, static: false}) columns: QueryList<StatusColumnComponent>;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     const url = new URL(window.location.href);
@@ -17,8 +22,12 @@ export class AppComponent {
     http.get(`${baseUrl}board?id=${this.boardId}`).subscribe(result => {
       this.board = result as any;
     }, error => {
-      this.board = { columns: [] };
+      this.error = error.message;
     });
+  }
+
+  reloadChildData() {
+    this.columns.forEach((col) => col.reloadData());
   }
 
 }

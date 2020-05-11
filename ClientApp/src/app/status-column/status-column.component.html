@@ -2,7 +2,7 @@
   <div class="heading">
     <span class="column_name"><a [href]="status.filterUrl" target="_blank">
       {{status.title}}
-    </a></span><span class="wip badge badge-secondary" *ngIf="tickets">{{tickets.length}}</span>
+    </a></span><span [class]="'wip badge ' + getWipLimitClass()" *ngIf="tickets" data-toggle="tooltip" data-placement="top" [title]="'Limit: ' + (status.wipLimit === null ? '∞' : status.wipLimit)">{{tickets.length}}</span>
   </div>
   <div class="content">
     <app-ticket-card [details]="ticket" *ngFor="let ticket of tickets"></app-ticket-card>

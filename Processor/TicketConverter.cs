@@ -21,7 +21,11 @@ namespace JiraBoardNg.Processor
             {
                 Id = issue.Key,
                 Summary = issue.Fields?.Summary,
-                Assignee = issue.Fields?.Assignee?.DisplayName,
+                Assignee = issue.Fields?.Assignee != null ? new User
+                {
+                    Name = issue.Fields?.Assignee?.DisplayName,
+                    Icon = issue.Fields?.Assignee?.AvatarUrls["16x16"],
+                } : null,
                 IssueType = new IssueType
                 {
                     Text = issue.Fields?.IssueType.Name,

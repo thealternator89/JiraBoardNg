@@ -1,9 +1,10 @@
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <span class="navbar-brand">{{board.boardTitle}}</span>
+  <nav *ngIf="!error" class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <span class="navbar-brand mr-auto">{{board.boardTitle}}</span>
+    <span class="material-icons" (click)="reloadChildData()">refresh</span>
   </nav>
   <div class="app">
     <app-status-column [status]="column" *ngFor="let column of board.columns"></app-status-column>
-    <app-board-empty-notice [boardId]="boardId" *ngIf="!(board && board.columns && board.columns.length > 0)"></app-board-empty-notice>
+    <app-board-empty-notice [boardId]="boardId" *ngIf="error"></app-board-empty-notice>
   </div>
 </body>

@@ -42,3 +42,11 @@ a {
 .badge {
   vertical-align: middle;
 }
+
+.assignee-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+}

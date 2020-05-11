@@ -1,53 +1,49 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using JiraBoardNg.Controllers.Models;
 using JiraBoardNg.Controllers.Models.Shared;
+using JiraBoardNg.Model;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace JiraBoardNg.Services
 {
     public class BoardsService : IBoardsService
     {
-        private readonly JObject _boardsConfig;
+        private readonly IDictionary<string, BoardConfig> _boardsConfig;
         private readonly string _jiraBaseUrl;
 
         public BoardsService(IConfiguration config)
         {
             var boardsText = File.ReadAllText("Data/Boards.json");
-            _boardsConfig = JObject.Parse(boardsText);
+            _boardsConfig = JsonConvert.DeserializeObject<IDictionary<string, BoardConfig>>(boardsText);
             _jiraBaseUrl = config["JiraClient:BaseUrl"] ?? throw new Exception("JIRA Base URL not found in configuration");
         }
 
         public BoardResponse BuildBoard(string id)
         {
-            if (_boardsConfig[id] == null)
+            if (!_boardsConfig.ContainsKey(id))
             {
                 throw new InvalidOperationException($"Board with ID {id} not found");
             }
-
+            
             var boardConfig = _boardsConfig[id];
 
             return new BoardResponse
             {
-                BoardTitle = boardConfig["Title"].Value<string>(),
-                Columns = ((JArray) boardConfig["Columns"])
-                    .Select((column) => BuildColumn(column as JObject))
-            };
-        }
-
-        private BoardColumn BuildColumn(JObject column)
-        {
-            var filterId = column["FilterId"].Value<int>();
-            
-            return new BoardColumn
-            {
-                Title = column["Title"].Value<string>(),
-                BgColor = column["BgColor"].Value<string>(),
-                FilterId = filterId,
-                FilterUrl = $"{_jiraBaseUrl}/issues/?filter={filterId}"
+                BoardTitle = boardConfig.Title,
+                Columns = boardConfig.Columns.Select(column => new BoardColumn
+                {
+                    Title = column.Title,
+                    BgColor = column.BgColor,
+                    FilterId = column.FilterId,
+                    FilterUrl = $"{_jiraBaseUrl}/issues/?filter={column.FilterId}",
+                    WipLimit = column.WipLimit
+                }),
             };
         }
     }

@@ -16,7 +16,10 @@ export class TicketCardComponent implements OnInit {
   public details: {
     id: string,
     summary: string,
-    assignee: string,
+    assignee: {
+      name: string,
+      icon: string,
+    },
     issueType: {
       text: string,
       icon: string

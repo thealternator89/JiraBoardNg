@@ -40,6 +40,7 @@ namespace JiraBoardNg.RestClients.Models
         public string DisplayName { get; set; }
         public bool Active { get; set; }
         public string Timezone { get; set; }
+        public IDictionary<string, string> AvatarUrls { get; set; }
     }
 
     public class JiraResponseIssueType

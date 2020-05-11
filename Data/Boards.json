@@ -10,27 +10,32 @@
       {
         "Title": "In Dev",
         "BgColor": "#cdf",
-        "FilterId": 20912
+        "FilterId": 20912,
+        "WipLimit": 3
       },
       {
         "Title": "In Review",
         "BgColor": "#cdf",
-        "FilterId": 20907
+        "FilterId": 20907,
+        "WipLimit": 3
       },
       {
         "Title": "Merged",
         "BgColor": "#cdf",
-        "FilterId": 20908
+        "FilterId": 20908,
+        "WipLimit": 3
       },
       {
         "Title": "Dev Test",
         "BgColor": "#fdc",
-        "FilterId": 20388
+        "FilterId": 20388,
+        "WipLimit": 3
       },
       {
         "Title": "QA Test",
         "BgColor": "#fdc",
-        "FilterId": 20909
+        "FilterId": 20909,
+        "WipLimit": 2
       },
       {
         "Title": "Release",
